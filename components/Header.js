@@ -5,15 +5,18 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className="max-width-container">
-        <h2>
-          <Link href="/">PressBlog</Link>
-        </h2>
-        <ul>
+        <Link href="/">
+          <span>
+            <span className="title-s">IRE</span>
+            <span className="title-b">Archive</span>
+          </span>
+        </Link>
+        <ul className="category-text">
           <li>
-            <Link href="/posts">About</Link>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <Link href="https://github.com/ire4564">GitHub Code</Link>
+            <Link href="https://github.com/ire4564">GitHub</Link>
           </li>
         </ul>
       </div>

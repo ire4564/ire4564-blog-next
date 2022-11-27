@@ -26,12 +26,12 @@
 .button {
   display: block;
   max-width: 300px;
+  border-radius: 50px;
   width: 100%;
   cursor: pointer;
-  border-radius: 4px;
   margin: 0 auto;
   padding: 10px;
   border: none;
-  background-color: #3b3b3b;
+  background-color: #5d775d;
   color: #fff;
 }

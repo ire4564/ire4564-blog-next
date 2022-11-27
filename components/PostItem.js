@@ -15,7 +15,7 @@ const PostItem = ({ post, postIndex }) => {
       >
         <h3
           className="title-b"
-          style={{ fontSize: "24px", marginBottom: "12px" }}
+          style={{ fontSize: "20px", marginBottom: "12px" }}
         >
           {post.data.title}
         </h3>
@@ -34,7 +34,9 @@ const PostItem = ({ post, postIndex }) => {
           </li>
           <li>
             <div className="title-b f-14">Tag.</div>
-            <div className="post-detail-box">{post.data.tag}</div>
+            <div className="post-detail-box">
+              {post.data.tag.split(" ").map((_tag) => `#${_tag}  `)}
+            </div>
           </li>
         </ul>
         <table>

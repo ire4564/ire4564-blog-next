@@ -1,0 +1,52 @@
+---
+title: d3. svg 위에 hover시 div로 툴팁 만들어 넣기
+subTitle: use d3 with svg
+category: React
+publishedOn: 2022.10. 9. 11:56
+tag: d3 javascript react typescript
+excerpt: d3로 개발한 bubble chart의 필요한 기능 중에 hover 시에 그 위로 bubble chart에 대한 정보들을 담은 툴팁이 나오도록 해야 했다. 그래서 고민이 많았다. 일단 svg위에 div를 위치 시켜야 하는건가? 그럼 svg 컴포넌트의 좌표를 일일히 다 정해 줘야 하는 거 아닌가? d3를 잘 다뤄 본 적도 없고 svg로 만든 컴포넌트들을 잘 다뤄 볼 일도 없어서 고민이 많았다.
+---
+
+import Meta from "../../components/Meta";
+import Title from "../../components/Title";
+
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@reach/disclosure";
+
+<Meta title="d3. svg 위에 hover시 div로 툴팁 만들어 넣기" />
+
+<Title
+  title={"d3. svg 위에 hover시 div로 툴팁 만들어 넣기"}
+  subTitle={"use d3 with svg"}
+  date={"2022.10. 9. 11:56"}
+/>
+
+#### Promblem
+
+d3로 개발한 bubble chart의 필요한 기능 중에 hover 시에 그 위로 bubble chart에 대한 정보들을 담은 툴팁이 나오도록 해야 했다. 그래서 고민이 많았다. 일단 svg위에 div를 위치 시켜야 하는건가? 그럼 svg 컴포넌트의 좌표를 일일히 다 정해 줘야 하는 거 아닌가? d3를 잘 다뤄 본 적도 없고 svg로 만든 컴포넌트들을 잘 다뤄 볼 일도 없어서 고민이 많았다.
+
+그런데 생각보다 해결 방법은 간단했다. 우선 sv위에 div를 올릴 수 있었고, 결론적으로 말하면 svg위에 올리는 것이 아니라 화면 전체에 그냥 포지션을 정해 준다는 느낌으로 해결이 가능했다.
+
+#### Solve
+
+우선 버블 차트 컴포넌트 내에 hover 할 경우에 필요한 정보들을 state로 선언해 주었다.
+
+```js
+state: {
+	isHover: false,
+    position: {x: 0, y: 0}
+    HoverData:''
+    ...
+}
+```
+
+대충 이런 느낌으로 선언해 준 뒤에, hover 시에 위의 정보들을 담게 했다. d3 모듈에서 각각의 원들이 어디에 있는지 정보를 x,y 축을 기준으로 좌표를 알 수 있었기 때문에, 툴팁 컴포넌트를 버블 차트 컴포넌트 내부에 선언하고 이를 hover시에 저 state에 있는 값들을 props로 받아서 각각의 좌표값 -10 정도의 위치를 absolute 속성으로 주어서 표시되게 끔 했다.
+
+말이 잘 이해가 안된다면 참고글을 보자! 나와의 경우와는 조금 다르게 chart위에 표시되는 것에 대한 해결책을 줬는데, 동작 방식은 비슷해서 많은 참고가 되었다. d3 컴포넌트에 맞게 필요한 것들을 고치는 작업에 품이 꽤 들었지만 원래 프로그래밍이란 이런 것이니까 뭐!
+
+#### 참고글
+
+[how to add tooltip in react d3 v4 bar chart](https://stackoverflow.com/questions/49611148/how-to-add-tooltip-in-react-d3-v4-bar-chart)

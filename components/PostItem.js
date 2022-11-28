@@ -40,14 +40,16 @@ const PostItem = ({ post, postIndex }) => {
           </li>
         </ul>
         <table>
-          <tr>
-            <td className="td-subtitle">{post.data.subTitle}</td>
-            <td className="td-detail">{post.data.excerpt}</td>
-          </tr>
-          <tr className="tr-record">
-            <td></td>
-            <td>ire4564 #{postIndex + 1} record</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className="td-subtitle">{post.data.subTitle}</td>
+              <td className="td-detail">{post.data.excerpt}</td>
+            </tr>
+            <tr className="tr-record">
+              <td></td>
+              <td>ire4564 #{postIndex + 1} record</td>
+            </tr>
+          </tbody>
         </table>
         {/** 
       <h3 className="title-b">

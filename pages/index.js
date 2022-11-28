@@ -28,12 +28,8 @@ const Home = ({ posts }) => {
   return (
     mounted && (
       <>
+        <Meta />
         <div className="align-center" style={{ marginTop: "-40px" }}>
-          <img
-            src="/assets/thumnail.png"
-            alt={"collect"}
-            style={{ display: "none" }}
-          />
           <img
             src="/assets/collect.png"
             width={78}

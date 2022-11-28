@@ -4,10 +4,8 @@ const Meta = ({ title }) => {
   return (
     <Head>
       <title>{title}</title>
-      <meta
-        name="keywords"
-        content="react native, blog, John Doe, tutorial, react navigation"
-      />
+      <meta name="keywords" content="ireArchive Record Blog" />
+      <meta property="og:image" content="/assets/thumnail.png" />
     </Head>
   );
 };

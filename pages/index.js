@@ -29,9 +29,14 @@ const Home = ({ posts }) => {
         </p>
       </div>
       <div className={styles.articleList}>
-        {filteredPosts.map((post, index) => (
-          <PostItem key={index} post={post} postIndex={index} />
-        ))}
+        {[...filteredPosts]
+          .sort(
+            (a, b) =>
+              new Date(b.data.publishedOn) - new Date(a.data.publishedOn)
+          )
+          .map((post, index) => (
+            <PostItem key={index} post={post} postIndex={index} />
+          ))}
         <button onClick={loadMorePosts} className={styles.button}>
           More Record
         </button>

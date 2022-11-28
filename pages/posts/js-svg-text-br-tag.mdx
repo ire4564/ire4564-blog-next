@@ -1,0 +1,81 @@
+---
+title: JS. svg text tag 관련 <br/> 먹히지 않는 현상
+subTitle: Use JS with svg tag, text tag <br>
+category: Javascript
+publishedOn: 2022. 9. 28. 11:59
+tag: Javascript svg React
+excerpt: 위의 두 가지 글을 참고했다. bubble chart를 위와 같은 형식으로 만들 일이 있었는데, 아래처럼 컴포넌트 내에서 처리를 해서 줄바꿈을 하려고 해도 먹히지 않는 현상이 발생하였다.
+---
+
+import Meta from "../../components/Meta";
+import Title from "../../components/Title";
+
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@reach/disclosure";
+
+<Meta title="JS. svg text tag 관련 <br/> 먹히지 않는 현상" />
+
+<Title
+  title={"JS. svg text tag 관련 <br/> 먹히지 않는 현상"}
+  subTitle={"Use JS with svg tag, text tag <br>"}
+  date={"2022. 9. 28. 11:59"}
+/>
+
+위의 두 가지 글을 참고했다. bubble chart를 위와 같은 형식으로 만들 일이 있었는데, 아래처럼 컴포넌트 내에서 처리를 해서 줄바꿈을 하려고 해도 먹히지 않는 현상이 발생하였다.
+
+```
+{ content.split("\n").map((txt) => (
+	<>
+    	{txt}
+     	<br/>
+    </>
+))}
+```
+
+보통은 이렇게 하면 먹힌다는데, 나는 d3를 사용하고 있어서 위의 태그를 보았더니 text tag 내에 있는 content였다. 이와 관련하여 글을 찾아보던 중에 (참고 문서)의 글과 MDN글을 찾게 되었다.
+
+**결론은, text tag 안에서는 br tag나 줄바꿈이 먹히지 않기 때문에 tspan 이라는 태그로 cotent를 감싸 주어서 그 각각의 태그마다 dx, dy 등의 속성으로 위치를 직접 잡아 주어야 한다는 것이다.**
+
+```
+{/*space line condition*/}
+            {content.split("\n").map((txt, idx) => {
+                if(content.split("\n").length === 1) {
+                    return <tspan> {txt} </tspan>
+                }
+                if(idx === 0 && content.split("\n").length >= 3) {
+                    return <tspan dy={-8}> {txt} </tspan>
+                }
+                if(idx === 0) {
+                    return <tspan dy={-1}> {txt} </tspan>
+                }
+                if(idx === 1 && txt.length === 1) {
+                    return <tspan dy={14} dx={-30}> {txt} </tspan>
+                }
+                else if(idx === 1 && txt.length <= 2) {
+                    return <tspan dy={14} dx={-36}> {txt} </tspan>
+                }
+                else if(idx === 1 && this.regex.test(txt) && txt.length >= 4) {
+                    return <tspan dy={14} dx={-46}> {txt} </tspan>
+                }
+                else if(idx === 1) {
+                    return <tspan dy={14} dx={-40}> {txt} </tspan>
+                }
+                else if(idx === 2 && txt.length < 3) {
+                    return <tspan dy={14} dx={-24}> {txt} </tspan>
+                }
+                else if(idx === 2) {
+                    return <tspan dy={14} dx={-38}> {txt} </tspan>
+                }
+            })}
+```
+
+번거롭지만 이 방법밖에 없는 것 같아서 아래와 같이 글자 수 별로 각각의 위치를 정해준 결과 맨 상단과 같은 줄바꿈이 된 결과물이 나올 수 있었다. (다른 방법이 있을까?)🤔🤔
+
+_참고 문서_
+
+[SVG 텍스트 - Graphics ARIA Guidebook](https://a11y.gitbook.io/graphics-aria/svg-graphics/svg-text)
+
+[text tag - SVG: Scalable Vector Graphics | MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text)

@@ -1,0 +1,49 @@
+---
+title: TS. Error (sorting Array) "objects Cannot assign to read only"
+subTitle: TS Error,  objects Cannot assign to read only
+category: TypeScript
+publishedOn: 2022. 10. 2. 10:42
+tag: TypeScript Echart React
+excerpt: object 내부에 있는 프로퍼티 값들을 기준으로 sorting을 해야 할 일이 있었다. 그런데 objects Cannot assign to read only property '2' of object '[object Array] 라는 오류가 발생하였다. 이를 해결하기 위해 아래의 방법을 찾아 보았다.
+---
+
+import Meta from "../../components/Meta";
+import Title from "../../components/Title";
+
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@reach/disclosure";
+
+<Meta title="TS. Error (sorting Array) objects Cannot assign to read only" />
+
+<Title
+  title={"TS. Error (sorting Array) objects Cannot assign to read only"}
+  subTitle={"TS Error,  objects Cannot assign to read only"}
+  date={"2022. 10. 2. 10:42"}
+/>
+
+**object 내부에 있는 프로퍼티 값들을 기준으로 sorting**을 해야 할 일이 있었다. 그런데 _**objects Cannot assign to read only property '2' of object '\[object Array\]**_ 라는 오류가 발생하였다. 이를 해결하기 위해 아래의 방법을 찾아 보았다.
+
+**문제 원인**
+
+**stackoverflow에서 찾은 답변은 아래와 같았다.**
+
+> The array is [frozen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) in [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), you'll need to copy the array before sorting it:
+
+```
+array = array.slice().sort((a, b) => b.stats.speed - a.stats.speed)
+```
+
+그래서 위와 같은 방법으로 array를 복사한 뒤에 sorting을 해당 프로퍼티의 값을 기준으로 내림차순 정렬을 했다.
+
+```
+data = data.slice().sort(function(a, b)  {
+        return (b.pcCnt+b.mobileCnt) - (a.pcCnt+a.mobileCnt);
+    });
+```
+
+**참고글**
+
+[Error while sorting array of objects Cannot assign to read only property '2' of object '\[object Array\]'](https://stackoverflow.com/questions/53420055/error-while-sorting-array-of-objects-cannot-assign-to-read-only-property-2-of)

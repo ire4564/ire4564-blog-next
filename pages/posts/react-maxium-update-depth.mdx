@@ -1,0 +1,37 @@
+---
+title: React. Error Maximum update depth 문제
+subTitle: Error Maximum update depth with React
+category: React
+publishedOn: 2022. 10. 9. 11:36
+tag: react typescript
+excerpt: 문제는 렌더링을 강제하는 코드를 테스트 하던 도중에, 이 코드를 어디다가 넣어야 내가 원하는 것처럼 동작을 할 지 그게 문제였다. 그런데, 제대로 동작을 하리라고 생각했던 곳에 넣었는데도 해결은 커녕 Maximum update depth 문제가 생겼다. 물론 이렇게 해서 나온 문제였으나 (근본적으로 이것이 문제가 아니라서 해결이라고 하기에도 뭐하지만) 이런 오류가 난 김에 이 문제에 대해서 생각해 보게 되었다.
+---
+
+import Meta from "../../components/Meta";
+import Title from "../../components/Title";
+
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@reach/disclosure";
+
+<Meta title="React. Error Maximum update depth 문제" />
+
+<Title
+  title={"React. Error Maximum update depth 문제"}
+  subTitle={"Error Maximum update depth with React"}
+  date={"2022. 10. 9. 11:36"}
+/>
+
+#### **Problem**:
+
+문제는 렌더링을 강제하는 코드를 테스트 하던 도중에, 이 코드를 어디다가 넣어야 내가 원하는 것처럼 동작을 할 지 그게 문제였다. 그런데, 제대로 동작을 하리라고 생각했던 곳에 넣었는데도 해결은 커녕 _**Maximum update depth**_ 문제가 생겼다. 물론 이렇게 해서 나온 문제였으나 (근본적으로 이것이 문제가 아니라서 해결이라고 하기에도 뭐하지만) 이런 오류가 난 김에 이 문제에 대해서 생각해 보게 되었다.
+
+글을 찾아보다 보니, 나도 항상 궁금했었다. **onClick={() => EventFunc(a)}** 항상 이벤트를 쓸 때에는 () => 요런 형식이 한 번 더 들어가서 쓰고 있는데 왜 그런가에 대한 의문... 그냥 **onClick = {onClick}**처럼 **onClick={**EventFunc**(a)}**라고 하면 안되는건가? 물론 안되는 건 알고 있었는데 왜 안되는지에 관해서는 궁금해져서 글을 좀 더 읽어보았다.
+
+#### **Solve:**
+
+위의 예시 EventFunc과 같이 **매개 변수가 들어가는 함수를 **onClick={**EventFunc**(a)}\***\* 이런 방식으로 처리한다면 제일 먼저 함수를 부르고 나서 > 렌더링 > 다시 함수를 부르고 > 렌더링 > 이러는 계속 무한 반복의 현상이 일어나게 된다. 언젠가 기억을 해 보면 저렇게 사용을 했을 경우 무한 루프가 발생한다는 오류도 떴었던 것 같다. \_**<Error: Maximum update depth exceeded. \>\*\*\_ 이것이다.
+
+요약해서 말하면 {}블럭안에 함수명 + ()을 하게 된다면 그냥 **호출을 의미**하게 된다. 따라서 이와 같이 매개 변수가 필요한 함수는 **onClick={() => EventFunc(a)}** 이렇게 쓰는 것이 맞다고 한다.

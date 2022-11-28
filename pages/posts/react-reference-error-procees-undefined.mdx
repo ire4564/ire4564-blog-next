@@ -1,0 +1,53 @@
+---
+title: React. ReferenceError process is not defined 해결
+subTitle: ReferenceError process is not defined
+category: React
+publishedOn: 2022. 10. 9. 11:09
+tag: React Typescript
+excerpt: react로 이것저것 시도를 해 보던 중, 이와 같은 오류가 발생하였다. 'ReferenceError, process is not defined'
+---
+
+import Meta from "../../components/Meta";
+import Title from "../../components/Title";
+
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@reach/disclosure";
+
+<Meta title="React. ReferenceError process is not defined 해결" />
+
+<Title
+  title={"React. ReferenceError process is not defined 해결"}
+  subTitle={"ReferenceError process is not defined "}
+  date={"2022. 10. 9. 11:09"}
+/>
+
+#### **Promblem:**
+
+react로 이것저것 시도를 해 보던 중, 이와 같은 오류가 발생하였다.
+
+_**ReferenceError: process is not defined**_
+
+### **Solve:**
+
+If the error is not resolved, try installing the 6.0.9 version of the react-error-overlay package.
+
+간단하게 버전 6.0.9의  react-error-overlay를 설치하면 된다고 한다.
+
+```
+# 👇️ with NPM
+npm install --save-dev react-error-overlay@6.0.9
+
+# --------------------------------------------
+
+# 👇️ with YARN
+yarn add react-error-overlay@6.0.9 --dev
+```
+
+**결론**: 근데 궁극적인 문제는 이게 아니었다... 일단 본문에서 말한 이 문제는 해결했는데 그냥 오류만 다채롭고 강렬하게 보여주는 방식으로 바뀐 것 뿐.... 다른 오류에 강렬하게 직면하게 됨.
+
+**참고글**
+
+[React ReferenceError: process is not defined](https://bobbyhadz.com/blog/react-referenceerror-process-not-defined)

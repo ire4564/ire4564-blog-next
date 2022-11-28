@@ -23,6 +23,11 @@ const Home = ({ posts }) => {
   return (
     <>
       <div className="align-center" style={{ marginTop: "-40px" }}>
+        <img
+          src="/assets/thumnail.png"
+          alt={"collect"}
+          style={{ display: "none" }}
+        />
         <img src="/assets/collect.png" width={78} height={28} alt={"collect"} />
         <p className="mini-desc">
           Records of study, records of worries, archives

@@ -28,6 +28,8 @@ const Home = ({ posts }) => {
   return (
     mounted && (
       <>
+        <Meta title="IRE Archive" />
+
         <div className="align-center" style={{ marginTop: "-40px" }}>
           <img
             src="/assets/collect.png"

@@ -1,22 +1,23 @@
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 const Meta = ({ title, description }) => {
   return (
-    <Head>
-      <title>{title || "IREArchive"}</title>
-      <meta
-        name="description"
-        content={description || "나만의 프로그래머 아카이브"}
-      />
-      <meta name="keywords" content="ireArchive Record Blog" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta
-        property="og:image"
-        content={
-          "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FPoLeS%2FbtrSlYCgWOq%2FooUrHNpGBH10ldSD8OpIG1%2Fimg.png"
-        }
-      />
-    </Head>
+    <NextSeo
+      title={title || "IREArchive"}
+      description={description || "나만의 프로그래머 아카이브"}
+      openGraph={{
+        url: "https://www.ire-archive.com",
+        title: "IREArchive",
+        description: "나만의 프로그래머 아카이브",
+        images: [
+          {
+            url: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FPoLeS%2FbtrSlYCgWOq%2FooUrHNpGBH10ldSD8OpIG1%2Fimg.png",
+          },
+        ],
+        siteName: "IREArchive",
+      }}
+    />
   );
 };
 

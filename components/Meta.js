@@ -6,6 +6,7 @@ const Meta = ({ title, description }) => {
       title={title || "IREArchive"}
       description={description || "나만의 프로그래머 아카이브"}
       openGraph={{
+        url: "https://ire4564-blog-next.vercel.app/",
         title: "IREArchive",
         description: "나만의 프로그래머 아카이브",
         images: [

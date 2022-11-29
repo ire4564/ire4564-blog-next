@@ -9,6 +9,10 @@ const MyDocument = () => {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"
         />
+        <meta
+          name="google-site-verification"
+          content="1GGa_w108WDxO12-fM8XhIFiZrW-5y2ZsHKrA8lT7C0"
+        />
         <meta property="og:title" content={"IRE Archive"} />
         <meta
           property="og:description"

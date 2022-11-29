@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { NextSeo } from "next-seo";
 
 const Meta = ({ title, description }) => {
@@ -7,7 +6,6 @@ const Meta = ({ title, description }) => {
       title={title || "IREArchive"}
       description={description || "나만의 프로그래머 아카이브"}
       openGraph={{
-        url: "https://www.ire-archive.com",
         title: "IREArchive",
         description: "나만의 프로그래머 아카이브",
         images: [

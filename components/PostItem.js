@@ -20,25 +20,28 @@ const PostItem = ({ post, postIndex }) => {
           {post.data.title}
         </h3>
         <div className="width-line"></div>
-        <ul className="post-detail-text">
-          <li style={{ width: "2%", marginLeft: "30px", marginRight: "-75px" }}>
+        <div style={{ display: "flex", marginBottom: "3px" }}>
+          <div style={{ width: "20px", float: "left" }}>
             <div className="height-square"></div>
-          </li>
-          <li>
+          </div>
+
+          <div className="align-div">
             <div className="title-b f-14">Category.</div>
             <div className="post-detail-box">{post.data.category}</div>
-          </li>
-          <li>
+          </div>
+
+          <div className="align-div">
             <div className="title-b f-14">Date.</div>
             <div className="post-detail-box">{post.data.publishedOn}</div>
-          </li>
-          <li>
+          </div>
+
+          <div className="align-div">
             <div className="title-b f-14">Tag.</div>
             <div className="post-detail-box">
               {post.data.tag.split(" ").map((_tag) => `#${_tag}  `)}
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
         <table>
           <tbody>
             <tr>
@@ -51,13 +54,6 @@ const PostItem = ({ post, postIndex }) => {
             </tr>
           </tbody>
         </table>
-        {/** 
-      <h3 className="title-b">
-        <Link href={`/posts/${post.slug}`}>{post.data.subTitle}</Link>
-      </h3>
-      <p>{post.data.excerpt}</p>
-      <Link href={`/posts/${post.slug}`}>Read more</Link>
-      */}
       </div>
     </Link>
   );

@@ -70,16 +70,14 @@ p {
 }
 
 .post-detail-text li {
-  list-style: none;
-  display: inline-block;
-  margin: -12px 10px;
-  width: 190px;
+  margin-top: 100px;
 }
 
 .post-detail-box {
+  min-height: 80%;
   color: #a5afa7;
   font-weight: 400;
-  padding: 5px;
+  padding: 5px 8px;
   margin-top: 3px;
   font-size: 12px;
   border-color: #a5afa7;
@@ -89,13 +87,13 @@ p {
 
 .height-square {
   width: 6px;
-  height: 50px;
-  margin: 3px -70px;
+  height: 80%;
+  margin-top: 10px;
   background-color: #5d775d;
 }
 
 .f-14 {
-  font-size: 14px;
+  font-size: 10px;
 }
 
 table {
@@ -118,7 +116,7 @@ td {
 .td-subtitle {
   font-size: 20px;
   font-weight: 900;
-  width: 208px;
+  width: 35%;
   height: 120px;
 }
 
@@ -142,4 +140,10 @@ td {
 
 .post-date {
   font-size: 14px;
+}
+
+.align-div {
+  float: left;
+  width: 29%;
+  margin: 10px 20px 10px 0px;
 }

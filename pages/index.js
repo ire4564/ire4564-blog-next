@@ -1,10 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import MeetMe from "../components/MeetMe.js";
-import Link from "next/link";
+
 import PostItem from "../components/PostItem";
 import styles from "../styles/Home.module.css";
-import Meta from "../components/Meta";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { getPosts } from "../scripts/utils.js";
 
@@ -28,8 +25,6 @@ const Home = ({ posts }) => {
   return (
     mounted && (
       <>
-        <Meta title="IRE Archive" />
-
         <div className="align-center" style={{ marginTop: "-40px" }}>
           <img
             src="/assets/collect.png"

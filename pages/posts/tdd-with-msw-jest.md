@@ -1,3 +1,30 @@
+---
+title: Test. next.js + msw + jest로 TDD 시도하기
+subTitle: TDD with next.js msw jest
+category: Test
+publishedOn: 2023-01-23 18:08
+tag: nextjs javascript react tdd test msw
+excerpt: 이번 작업에서  유저가 쓴 글들을 모아볼 수 있는 유저 페이지가 추가되어야 했다. 이 경우에 리스트 컴포넌트와 같은 경우에는 이미 이전에 쓰던 컴포넌트가 있었지만 유저 정보가 들어가 있는 컴포넌트는 새로 만들어야 했다. 게다가 이 유저 정보 컴포넌트는 크리에이터인지, 멤버인지, 소유자인지에 따라서 보여줘야 하는 방식에 대한 케이스가 다양했기 때문에 테스트를 도입하면 좋을 것 같다는 생각이 들었다.
+---
+
+import Meta from "../../components/Meta";
+import Title from "../../components/Title";
+
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@reach/disclosure";
+
+<Meta title="Test. next.js + msw + jest로 TDD 시도하기" />
+
+<Title
+  title={"Test. next.js + msw + jest로 TDD 시도하기"}
+  subTitle={"TDD with next.js msw jest"}
+  date={"2023-01-23 18:08"}
+/>
+
+
 **목차**
 
 1. 작업에 대한 필요성 (테스트 → 작업  TDD 시도하기)
